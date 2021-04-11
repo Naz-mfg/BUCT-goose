@@ -49,6 +49,7 @@ Page({
  // .where(data)
   .count()
   .then(res => {
+    console.log(res)
       this.data.totalCount = res.total
       // 得到总页数
       this.data.maxPage = Math.floor(this.data.totalCount / this.data.perNum);
@@ -189,9 +190,7 @@ Page({
         .skip(20*cishu)
         .get({
           success: res => {   
-            
             //console.log("点赞列表:", res.data)
-
             for (var i = 0; i < res.data.length; i++) {
               UserUpId[i] = res.data[i].Up_Post_id//点赞列表赋值
             }
@@ -240,6 +239,7 @@ Page({
             get_inf_db.collection('Assistant_User').where({
               _openid: _.in(res)
             }).get().then(res => {
+              console.log(res)
               that.data.UsernameArry = [];
               that.data.UserHeadurlArry=[];
               for (let i = 0; i < this.data.DataPostArry.length;i++){
@@ -248,6 +248,7 @@ Page({
                   if(openId == res.data[j]._openid){
                     that.data.UsernameArry.push(res.data[j].Username);
                     that.data.UserHeadurlArry.push(res.data[j].User_head_url);
+                    break;
                   }
                 }
               }

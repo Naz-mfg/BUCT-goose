@@ -122,7 +122,7 @@ Page({
       _openid: wx.getStorageSync("myOpenId"),
     }).get({
       success: res => {
-       // console.log(res);
+       console.log(res);
         if (86400000>(Nowtime - res.data[0].Creat_user_Time))
         {
           Nowtime=1;
